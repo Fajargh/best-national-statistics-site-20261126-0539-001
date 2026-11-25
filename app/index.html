@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="NusaStat — Indonesia's national statistics at a glance: population, economy, health, education and all 38 provinces, with charts, tables and sources.">
+<title>NusaStat — National Statistics of Indonesia</title>
+<link rel="stylesheet" href="style.css">
+<script type="module" src="main.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#/">
+      <span class="brand-mark" aria-hidden="true">▦</span>
+      <span class="brand-name">NusaStat</span>
+      <span class="brand-sub">National Statistics · Indonesia</span>
+    </a>
+    <nav class="mainnav" aria-label="Main navigation">
+      <a href="#/" data-nav="home">Overview</a>
+      <a href="#/population" data-nav="population">Population</a>
+      <a href="#/economy" data-nav="economy">Economy</a>
+      <a href="#/health" data-nav="health">Health</a>
+      <a href="#/education" data-nav="education">Education</a>
+      <a href="#/provinces" data-nav="provinces">Provinces</a>
+      <a href="#/about" data-nav="about">Sources</a>
+    </nav>
+    <form class="topsearch" id="topsearch" role="search" action="#/search">
+      <label class="visually-hidden" for="q">Search statistics</label>
+      <input id="q" name="q" type="search" placeholder="Search indicators, provinces…" autocomplete="off">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</header>
+<main id="app" class="wrap"></main>
+<footer class="sitefoot">
+  <div class="wrap foot-inner">
+    <p><strong>NusaStat</strong> — an independent statistics portal. Figures are rounded estimates
+    compiled from publications of BPS — Statistics Indonesia, Bank Indonesia and the World Bank.
+    See <a href="#/about">Sources &amp; methods</a> for the basis of every figure.</p>
+    <p class="foot-note">Data year 2024 unless stated otherwise · Updated 26 November 2026 · All figures on this site are free to reuse with attribution.</p>
+  </div>
+</footer>
+</body>
+</html>
