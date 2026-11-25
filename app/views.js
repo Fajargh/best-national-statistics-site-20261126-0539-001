@@ -11,7 +11,7 @@ function esc(s) {
 function kpiCard(ind, extra = '') {
   return `<a class="kpi" href="#/indicator/${ind.slug}">
     <div class="kpi-label">${esc(ind.title)}</div>
-    <div class="kpi-value">${fmt(ind.value, ind.slug === 'gini' ? 3 : ind.value < 10 ? 2 : ind.value < 100 ? 1 : 0)} <span class="kpi-unit">${esc(ind.unit)}</span></div>
+    <div class="kpi-value">${fmt(ind.value, ind.slug === 'gini' ? 3 : ind.value < 10 ? 2 : ind.value < 1000 ? 1 : 0)} <span class="kpi-unit">${esc(ind.unit)}</span></div>
     <div class="kpi-change ${ind.changeDir === 'up' ? 'up' : 'down'}">${esc(ind.change)}</div>
     <div class="kpi-source">${esc(ind.source)}, ${ind.year}${extra}</div>
   </a>`;
@@ -25,7 +25,7 @@ function indicatorList(category) {
   const items = INDICATORS.filter((i) => i.category === category);
   return `<div class="ind-list">${items.map((i) => `<a class="ind-item" href="#/indicator/${i.slug}">
     <span><span class="ind-name">${esc(i.title)}</span><br><span class="ind-year">${esc(i.source)}, ${i.year}</span></span>
-    <span class="ind-value">${fmt(i.value, i.slug === 'gini' ? 3 : i.value < 10 ? 2 : i.value < 100 ? 1 : 0)} ${esc(i.unit)}</span>
+    <span class="ind-value">${fmt(i.value, i.slug === 'gini' ? 3 : i.value < 10 ? 2 : i.value < 1000 ? 1 : 0)} ${esc(i.unit)}</span>
   </a>`).join('')}</div>`;
 }
 
@@ -368,7 +368,7 @@ export function indicatorPage(slug) {
   const related = INDICATORS.filter((i) => i.category === ind.category && i.slug !== slug).slice(0, 4);
   return `${topicHead(ind.category, ind.title, ind.note)}
   <div class="statline">
-    <div class="stat"><b>${fmt(ind.value, ind.slug === 'gini' ? 3 : ind.value < 10 ? 2 : ind.value < 100 ? 1 : 0)} ${esc(ind.unit)}</b><span>Latest value, ${ind.year}</span></div>
+    <div class="stat"><b>${fmt(ind.value, ind.slug === 'gini' ? 3 : ind.value < 10 ? 2 : ind.value < 1000 ? 1 : 0)} ${esc(ind.unit)}</b><span>Latest value, ${ind.year}</span></div>
     <div class="stat"><b>${esc(ind.change)}</b><span>Change on the previous year</span></div>
     <div class="stat"><b>${totalChange > 0 ? '+' : ''}${totalChange}%</b><span>Change since ${first.year}</span></div>
   </div>
@@ -386,7 +386,7 @@ export function indicatorPage(slug) {
         <dt>Coverage</dt><dd>National, Indonesia — provincial breakdowns on the <a href="#/provinces">provinces page</a></dd>
       </dl></div>
     <div class="card"><h3>Related indicators</h3>
-      ${related.map((r) => `<p><a href="#/indicator/${r.slug}">${esc(r.title)}</a> — <b>${fmt(r.value, r.slug === 'gini' ? 3 : r.value < 10 ? 2 : 1)} ${esc(r.unit)}</b> (${r.year})</p>`).join('')}
+      ${related.map((r) => `<p><a href="#/indicator/${r.slug}">${esc(r.title)}</a> — <b>${fmt(r.value, r.slug === 'gini' ? 3 : r.value < 10 ? 2 : r.value < 1000 ? 1 : 0)} ${esc(r.unit)}</b> (${r.year})</p>`).join('')}
       <p><a href="#/about">How we compile these figures →</a></p></div>
   </div></section>`;
 }
@@ -422,7 +422,7 @@ export function searchPage(query) {
 function indicatorListAll(items) {
   return `<div class="ind-list">${items.map((i) => `<a class="ind-item" href="#/indicator/${i.slug}">
     <span><span class="ind-name">${esc(i.title)}</span><br><span class="ind-year">${esc(i.source)}, ${i.year}</span></span>
-    <span class="ind-value">${fmt(i.value, i.slug === 'gini' ? 3 : i.value < 10 ? 2 : i.value < 100 ? 1 : 0)} ${esc(i.unit)}</span>
+    <span class="ind-value">${fmt(i.value, i.slug === 'gini' ? 3 : i.value < 10 ? 2 : i.value < 1000 ? 1 : 0)} ${esc(i.unit)}</span>
   </a>`).join('')}</div>`;
 }
 
@@ -452,7 +452,7 @@ export function aboutPage() {
       <th>Indicator</th><th>Latest value</th><th>Year</th><th>Source</th>
     </tr></thead><tbody>
     ${INDICATORS.map((i) => `<tr><td><a href="#/indicator/${i.slug}">${esc(i.title)}</a></td>
-      <td class="num">${fmt(i.value, i.slug === 'gini' ? 3 : i.value < 10 ? 2 : i.value < 100 ? 1 : 0)} ${esc(i.unit)}</td>
+      <td class="num">${fmt(i.value, i.slug === 'gini' ? 3 : i.value < 10 ? 2 : i.value < 1000 ? 1 : 0)} ${esc(i.unit)}</td>
       <td class="num">${i.year}</td><td>${esc(i.source)}</td></tr>`).join('')}
     </tbody></table></div></section>`;
 }
